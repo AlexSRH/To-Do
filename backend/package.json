@@ -6,12 +6,16 @@
   "repository": "https://github.com/AlexSRH/To-Do",
   "author": "Alexsandro G Bezerra",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.0.3",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.7"
+    "sequelize": "^5.21.7",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
