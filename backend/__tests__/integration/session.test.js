@@ -1,21 +1,18 @@
 const request = require('supertest')
-const { v4 } = require('uuid')
 
 const app = require('../../src/app')
-require('../../src/database')
-const User = require('../../src/app/models/User')
+const  factory = require('../factories')
 
 const truncate = require('../utils/truncate')
 
-beforeEach(async () => { await truncate() })
-
 describe('authetication', () => {
+  beforeEach(async () => {
+    await truncate()
+  })
+
   it('should autheticate with valid credentials', async () => {
-    const user = await User.create({
-      id: v4(),
-      name: 'Alexsandro',
-      email: 'aalexo1313@gmail.com',
-      password_hash: '123456'
+    const user = await factory.create('User', {
+      password: '123456'
     })
 
     const response = await request(app)
