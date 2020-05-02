@@ -13,4 +13,4 @@ Sistema simples de To Do List com usuários, listas e itens de To Do em cada lis
 - React Native
 
 ### Licença
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
