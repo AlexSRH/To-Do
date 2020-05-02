@@ -13,7 +13,9 @@ module.exports = {
         references: {
           model: 'to_do_lists',
           key: 'id'
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       text: {
         type: Sequelize.STRING(50),
@@ -36,12 +38,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
+    return queryInterface.dropTable('to_dos')
   }
 }
