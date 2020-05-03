@@ -76,7 +76,7 @@ describe('authetication', () => {
     })
 
     const response = await request(app)
-    .get('/to-do-lists')
+    .get(`/${user.id}/to-do-lists`)
     .set('Authorization', `Bearer ${user.generateToken()}`)
 
     expect(response.status).toBe(200)
@@ -85,7 +85,7 @@ describe('authetication', () => {
   it('should not be able to access private routes without jwt token', async () => {
     const user = await factory.create('User')
 
-    const response = await request(app).get('/to-do-lists')
+    const response = await request(app).get(`/${user.id}/to-do-lists`)
 
     expect(response.status).toBe(401)
   })
@@ -94,7 +94,7 @@ describe('authetication', () => {
     const user = await factory.create('User')
 
     const response = await request(app)
-      .get('/to-do-lists')
+      .get(`/${user.id}/to-do-lists`)
       .set('Authorization', `Bearer 123456`)
 
     expect(response.status).toBe(401)

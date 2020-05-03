@@ -3,6 +3,10 @@ const { DataTypes, Model } = require('sequelize')
 class ToDoList extends Model {
   static init (sequelize) {
     super.init({
+      user_id: {
+        type: DataTypes.UUID,
+        allowNull: false
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false
