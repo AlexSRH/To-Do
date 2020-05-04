@@ -1,8 +1,6 @@
 const request = require('supertest')
 const faker = require('faker')
 
-require('../../src/database')
-const User = require('../../src/app/models/User')
 const app = require('../../src/app')
 
 describe('User routes', () => {
@@ -17,6 +15,6 @@ describe('User routes', () => {
         password: faker.internet.password()
       })
 
-    expect(response.body.email).toBe(email)
+    expect(response.body.user.email).toBe(email)
   })
 })

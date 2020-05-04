@@ -14,11 +14,11 @@ beforeAll(async () => {
 describe('To Do List ', () => {
   it('should create a to do list', async () => {
     const response = await request(app)
-      .post(`/${user.id}/to-do-lists`)
+      .post(`/to-do-lists`)
       .set('Authorization', `Bearer ${user.generateToken()}`)
       .send({ name: 'Tarefas da escola' })
 
-    const toDoList = await ToDoList.findOne({ where: { id: response.body.id} })
+    const toDoList = await ToDoList.findOne({ where: { id: response.body.id } })
 
     expect(toDoList.name).toBe('Tarefas da escola')
   })

@@ -13,7 +13,7 @@ routes.post('/sessions', SessionController.store)
 
 routes.use(authMiddleware)
 
-routes.get('/:user_id/to-do-lists', ToDoListController.index)
-routes.post('/:user_id/to-do-lists', ToDoListController.store)
+routes.get('/to-do-lists', ToDoListController.index)
+routes.post('/to-do-lists', ToDoListController.store)
 
 module.exports = routes
