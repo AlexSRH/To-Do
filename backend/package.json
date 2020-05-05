@@ -4,11 +4,11 @@
   "description": "A To Do backend system",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexSRH/To-Do.git"
+    "url": "https://github.com/AlexSRH/To-Do.git"
   },
   "author": "Alexsandro G Bezerra",
   "license": "MIT",
@@ -17,7 +17,17 @@
   },
   "homepage": "https://github.com/AlexSRH/To-Do#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "sequelize": "^5.21.7"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^26.0.1"
   }
 }
