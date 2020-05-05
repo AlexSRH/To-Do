@@ -1,0 +1,23 @@
+{
+  "name": "to-do-backend",
+  "version": "1.0.0",
+  "description": "A To Do backend system",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexSRH/To-Do.git"
+  },
+  "author": "Alexsandro G Bezerra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexSRH/To-Do/issues"
+  },
+  "homepage": "https://github.com/AlexSRH/To-Do#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^5.21.7"
+  }
+}
