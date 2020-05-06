@@ -27,6 +27,10 @@ class User extends Model {
       sequelize
     })
   }
+
+  static associate (models) {
+    this.hasOne(models.ToDoList, { foreignKey: 'user_id', as: 'ToDoLists' })
+  }
 }
 
 module.exports = User
