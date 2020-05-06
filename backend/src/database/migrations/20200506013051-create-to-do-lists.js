@@ -6,6 +6,7 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
         allowNull: false
       },
       user_id: {
@@ -14,7 +15,9 @@ module.exports = {
         references: {
           model: 'users',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       name: {
         type: Sequelize.STRING(35),

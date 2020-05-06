@@ -6,6 +6,7 @@ module.exports = {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true
       },
       to_do_list_id: {
@@ -14,7 +15,9 @@ module.exports = {
         references: {
           model: 'to_do_lists',
           key: 'id'
-        }
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
       },
       text: Sequelize.STRING(140),
       created_at: {
