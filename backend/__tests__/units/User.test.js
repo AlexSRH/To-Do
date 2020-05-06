@@ -1,9 +1,6 @@
 const bcrypt = require('bcryptjs')
 
 const factory = require('../utils/factories')
-const truncate = require('../utils/truncate')
-
-beforeEach(truncate)
 
 describe('User Controller', () => {
   it('should encrypt user password when create an user', async () => {

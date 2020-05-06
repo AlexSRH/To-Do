@@ -1,7 +1,4 @@
 const factory = require('../utils/factories')
-const truncate = require('../utils/truncate')
-
-beforeEach(truncate)
 
 describe('To Do List Model', () => {
   it('should create a to do list', async () => {
