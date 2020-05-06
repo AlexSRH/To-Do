@@ -4,7 +4,11 @@
   "description": "A To Do backend system",
   "main": "src/server.js",
   "scripts": {
-    "test": "jest"
+    "dev": "nodemon src/server.js",
+
+    "pretest": "NODE_ENV=test sequelize db:migrate",
+    "test": "NODE_ENV=test jest",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
@@ -17,9 +21,13 @@
   },
   "homepage": "https://github.com/AlexSRH/To-Do#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "sequelize": "^5.21.7"
+    "pg": "^8.0.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.7",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -28,6 +36,11 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^26.0.1"
+    "factory-girl": "^5.0.4",
+    "faker": "^4.1.0",
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1",
+    "sqlite3": "^4.2.0"
   }
 }
