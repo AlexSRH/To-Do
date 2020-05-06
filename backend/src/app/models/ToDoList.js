@@ -9,6 +9,7 @@ class ToDoList extends Model {
 
   static associate (models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'User' })
+    this.hasOne(models.ToDoItem, { foreignKey: 'to_do_list_id', as: 'to_dos' })
   }
 }
 
