@@ -20,6 +20,11 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       text: Sequelize.STRING(140),
+      checked: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        default: false
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

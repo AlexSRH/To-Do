@@ -1,5 +1,9 @@
 const factory = require('../utils/factories')
 
+const truncate = require('../utils/truncate')
+
+beforeEach(truncate)
+
 describe('To Do model', () => {
   it('should create a ToDo item', async () => {
     const user = await factory.create('User')

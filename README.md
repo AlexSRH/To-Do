@@ -1,7 +1,5 @@
 # To Do List System
 
-⚠️ Desenvolvimento temporariamente encerrado.
-
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=7159c1&labelColor=000000" alt="Welcome!" />
   <img alt="License" src="https://img.shields.io/github/license/alexsrh/to-do">

@@ -3,7 +3,12 @@ const { Model, DataTypes } = require('sequelize')
 class ToDoItem extends Model {
   static init (sequelize) {
     super.init({
-      text: DataTypes.STRING(35)
+      text: DataTypes.STRING(35),
+      checked: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      }
     }, { sequelize })
   }
 

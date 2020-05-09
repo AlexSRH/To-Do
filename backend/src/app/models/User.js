@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const { Model, DataTypes } = require('sequelize')
 const { v4 } = require('uuid')
+const jwt = require('jsonwebtoken')
 
 class User extends Model {
   static init (sequelize) {
@@ -27,6 +28,14 @@ class User extends Model {
 
   static associate (models) {
     this.hasOne(models.ToDoList, { foreignKey: 'user_id', as: 'ToDoLists' })
+  }
+
+  checkPassword (password) {
+    return bcrypt.compare(password, this.password_hash)
+  }
+
+  generateToken () {
+    return jwt.sign({ id: this.id }, process.env.APP_SECRET, { expiresIn: 86400 })
   }
 }
 
