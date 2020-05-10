@@ -1,0 +1,13 @@
+.create-account {
+  color: #aaa;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 40px;
+  text-decoration: none;
+}
+
+.login svg {
+  stroke-width: 3px;
+  transform: translateY(3px);
+}

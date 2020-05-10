@@ -5,11 +5,14 @@
   box-sizing: border-box;
 }
 
-body {
-  font: 400 14px Roboto, sans-serif;
-  background-color: #222;
+html, body {
+  background-color: #242424;
+  display: grid;
   color: #eee;
+  font: 400 14px Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  width: 100vw;
+  height: 100vh;
 }
 
 input, button, textarea {
@@ -18,4 +21,72 @@ input, button, textarea {
 
 button {
   cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 80%;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 10%;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.box {
+  background-color: #3a3a3a;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  width: 480px;
+}
+
+.box h1 {
+  margin-bottom: 50px;
+  font-size: 36px;
+}
+
+.box input {
+  background-color: #636363;
+  border: 0;
+  border-radius: 10px;
+  color: #ddd;
+  display: block;
+  line-height: 32px;
+  margin-bottom: 40px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+::placeholder {
+  color: #aaa;
+}
+
+.box button {
+  border: 0;
+  width: 100%;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 30px;
+}
+
+.back-button {
+  align-items: center;
+  background-color: #3a3a3a;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
 }
