@@ -10,7 +10,7 @@ module.exports = {
         primaryKey: true
       },
       to_do_list_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'to_do_lists',

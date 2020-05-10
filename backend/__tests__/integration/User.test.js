@@ -19,4 +19,24 @@ describe('User Controller', () => {
     expect(response.status).toBe(200)
     expect(response.body.user).toHaveProperty('id')
   })
+
+  it('should not create a user if is already created', async () => {
+    await request(app)
+      .post('/users')
+      .send({
+        name: faker.name.findName(),
+        email: 'aalexo1313@gmail.com',
+        password: faker.internet.password()
+      })
+
+    const response = await request(app)
+      .post('/users')
+      .send({
+        name: faker.name.findName(),
+        email: 'aalexo1313@gmail.com',
+        password: faker.internet.password()
+      })
+
+    expect(response.status).toBe(409)
+  })
 })
