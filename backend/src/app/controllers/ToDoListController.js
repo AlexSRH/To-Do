@@ -1,5 +1,5 @@
 const ToDoList = require('../models/ToDoList')
-const checkToDoListOwner = require('../utils/checkToDoListOwner')
+// const checkToDoListOwner = require('../middlewares/checkToDoListOwner')
 
 module.exports = {
   async index (req, res) {
@@ -25,14 +25,8 @@ module.exports = {
   },
 
   async delete (req, res) {
-    const id = req.params.id
+    await ToDoList.destroy({ where: { id: req.params.id } })
 
-    if (!await checkToDoListOwner(req.userId, id)) {
-      return res.status(401).send()
-    }
-
-    ToDoList.destroy({ where: { id } })
-
-    return res.send()
+    return res.status(204).send()
   }
 }

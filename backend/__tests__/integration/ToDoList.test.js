@@ -54,7 +54,7 @@ describe('To Do List Controller', () => {
       .delete(`/to-do-lists/${toDoList.id}`)
       .set({ Authorization: `Bearer ${token}` })
 
-    expect(response.status).toBe(200)
+    expect(response.status).toBe(204)
   })
 
   it('should not delete from others to do list', async () => {
