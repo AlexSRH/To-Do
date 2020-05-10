@@ -1,5 +1,13 @@
+const ToDoList = require('../models/ToDoList')
+
 module.exports = {
-  index (req, res) {
-    return res.json([])
+  async index (req, res) {
+    const userId = req.userId
+
+    const toDoLists = await ToDoList.findAll({
+      where: { user_id: userId }
+    })
+
+    return res.json(toDoLists)
   }
 }
