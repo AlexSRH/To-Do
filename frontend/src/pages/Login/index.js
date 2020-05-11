@@ -12,13 +12,13 @@ export default function Login () {
   return (
     <>
       <header>
-        <h1>Generic To Do</h1>
+        <h1>To Do Lists System</h1>
       </header>
       <main>
         <div className="box">
           <h1>Login</h1>
           <form onSubmit={handleLogin}>
-            <input type="text" placeholder="E-mail"/>
+            <input type="email" placeholder="E-mail"/>
             <input type="password" placeholder="Senha"/>
             <button type="submit" className="login">
               Fazer Login&nbsp;

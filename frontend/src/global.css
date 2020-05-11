@@ -45,9 +45,11 @@ header {
 .box {
   background-color: #3a3a3a;
   border-radius: 20px;
+  max-width: 500px;
+  min-width: 300px;
   padding: 30px;
   text-align: center;
-  width: 480px;
+  width: 85%;
 }
 
 .box h1 {
