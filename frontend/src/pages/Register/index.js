@@ -19,7 +19,7 @@ export default function Register () {
       </header>
       <main>
         <div className="box">
-          <h1>Nova conta</h1>
+          <h2>Nova conta</h2>
           <form>
             <input type="text" placeholder="Nome"/>
             <input type="text" placeholder="E-mail"/>

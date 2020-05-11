@@ -7,8 +7,9 @@
 
 html, body {
   background-color: #242424;
-  display: grid;
   color: #eee;
+  display: flex;
+  flex-direction: row;
   font: 400 14px Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   width: 100vw;
@@ -20,16 +21,17 @@ input, button, textarea {
 }
 
 button {
+  border: 0;
   cursor: pointer;
 }
 
 main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 80%;
+  height: 86%;
 }
 
 header {
@@ -45,16 +47,16 @@ header {
 .box {
   background-color: #3a3a3a;
   border-radius: 20px;
-  max-width: 500px;
+  max-width: 540px;
   min-width: 300px;
   padding: 30px;
   text-align: center;
   width: 85%;
 }
 
-.box h1 {
+.box h2 {
   margin-bottom: 50px;
-  font-size: 36px;
+  font-size: 30px;
 }
 
 .box input {
@@ -74,7 +76,6 @@ header {
 }
 
 .box button {
-  border: 0;
   width: 100%;
   font-size: 24px;
   font-weight: bold;
@@ -91,4 +92,19 @@ header {
   justify-content: center;
   width: 48px;
   height: 48px;
+}
+
+@media only screen and (max-width: 600px) {
+  header h1 {
+    font-size: 24px;
+  }
+
+  .box h2 {
+    margin-bottom: 50px;
+    font-size: 24px;
+  }
+
+  .box button {
+    font-size: 20px;
+  }
 }

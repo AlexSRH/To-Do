@@ -16,7 +16,7 @@ export default function Login () {
       </header>
       <main>
         <div className="box">
-          <h1>Login</h1>
+          <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <input type="email" placeholder="E-mail"/>
             <input type="password" placeholder="Senha"/>
