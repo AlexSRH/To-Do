@@ -13,7 +13,7 @@ export default function Register () {
     <>
       <header>
         <h1>Registrar-se</h1>
-        <Link className='back-button' to='/'>
+        <Link className='back-button' to='/login'>
           <FiArrowLeft size={24} color="#F6F6F6"/>
         </Link>
       </header>

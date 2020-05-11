@@ -22,9 +22,9 @@ export default function Profile () {
             </button>
           </li>
         </ul>
-        <button className='new-to-do-list'>
-          <FiPlus size={36} color='f3f3f3' />
-        </button>
+        <Link className='new-to-do-list' to='/to-do-lists/new'>
+          <FiPlus size={32} color='f3f3f3' />
+        </Link>
       </main>
     </>
   )
