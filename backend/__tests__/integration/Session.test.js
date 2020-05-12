@@ -71,4 +71,12 @@ describe('Authentication', () => {
 
     expect(response.status).toBe(401)
   })
+
+  it('should not authenticate a user who not exists', async () => {
+    const response = await request(app)
+      .post('/sessions')
+      .send({ email: 'aalexo1313@gmail.com', password: '123123' })
+
+    expect(response.status).toBe(409)
+  })
 })
