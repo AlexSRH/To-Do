@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { FiArrowLeft } from 'react-icons/fi'
-
-import { Link } from 'react-router-dom'
-
 import './style.css'
+import BackButton from '../../components/BackButton'
 
 export default function Register () {
   useEffect(() => { document.title = 'To Do System - Register' }, [])
@@ -13,9 +10,7 @@ export default function Register () {
     <>
       <header>
         <h1>Registrar-se</h1>
-        <Link className='back-button' to='/login'>
-          <FiArrowLeft size={24} color="#F6F6F6"/>
-        </Link>
+        <BackButton to='/login' />
       </header>
       <main>
         <div className="box">

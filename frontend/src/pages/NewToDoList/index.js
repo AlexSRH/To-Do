@@ -1,15 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { FiArrowLeft } from 'react-icons/fi'
+
+import BackButton from '../../components/BackButton'
 
 export default function NewToDoList () {
   return (
     <>
       <header>
         <h1>Nova lista de To Dos</h1>
-        <Link className='back-button' to='/'>
-          <FiArrowLeft size={24} color="#F6F6F6"/>
-        </Link>
+        <BackButton to='/'/>
       </header>
       <main>
         <div className="box">

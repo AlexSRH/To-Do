@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { FiLogOut, FiTrash2, FiPlus } from 'react-icons/fi'
+import { FiTrash2, FiPlus } from 'react-icons/fi'
 
+import LogoutButton from '../../components/LogoutButton'
 import './style.css'
 
 export default function Profile () {
@@ -9,9 +10,7 @@ export default function Profile () {
     <>
       <header>
         <h1>Bem Vindo, Alex!</h1>
-        <Link className='back-button' to='/'>
-          <FiLogOut size={24} color="#F6F6F6"/>
-        </Link>
+        <LogoutButton />
       </header>
       <main>
         <ul className='to-do-lists'>
@@ -22,7 +21,7 @@ export default function Profile () {
             </button>
           </li>
         </ul>
-        <Link className='new-to-do-list' to='/to-do-lists/new'>
+        <Link className='new-to-do-list' to='/new-to-do-list'>
           <FiPlus size={32} color='f3f3f3' />
         </Link>
       </main>
