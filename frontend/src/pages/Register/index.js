@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './style.css'
 import BackButton from '../../components/BackButton'
 
 export default function Register () {
   useEffect(() => { document.title = 'To Do System - Register' }, [])
+
+  const [ name, setName ] = useState('')
+
+  function handleCreateUser (event) {
+    event.preventDefault()
+
+    console.log({
+      name
+    })
+  }
 
   return (
     <>
@@ -15,8 +25,8 @@ export default function Register () {
       <main>
         <div className="box">
           <h2>Nova conta</h2>
-          <form>
-            <input type="text" placeholder="Nome"/>
+          <form onSubmit={handleCreateUser}>
+            <input type="text" onChange={e => setName(e.target.name)} placeholder="Nome"/>
             <input type="text" placeholder="E-mail"/>
             <input type="password" placeholder="Senha"/>
             <button type="submit" className="login">Criar Conta</button>

@@ -82,6 +82,9 @@ header {
   padding: 10px;
   border-radius: 10px;
   line-height: 30px;
+  background-color: #aaa;
+}
+.box button:hover {
 }
 
 .back-button {
