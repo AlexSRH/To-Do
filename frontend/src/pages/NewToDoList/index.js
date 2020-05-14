@@ -18,9 +18,7 @@ export default function NewToDoList () {
     e.preventDefault()
 
     api.post('/to-do-lists', { name }, { headers: { 'Authorization': token } })
-      .then(res => setName(res.data))
-
-    history.push('/')
+      .then(res => history.push('/'))
   }
 
   return (
