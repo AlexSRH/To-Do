@@ -48,10 +48,11 @@ export default function Profile () {
               </li>
             ))
           }
-        </ul>
-        <Link className='new-to-do-list' to='/to-do-lists/new'>
+                  <Link className='new-to-do-list' to='/to-do-lists/new'>
           <FiPlus size={32} color='#f3f3f3' />
         </Link>
+        </ul>
+
       </main>
     </>
   )

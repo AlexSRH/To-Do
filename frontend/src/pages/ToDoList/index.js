@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
 import BackButton from '../../components/BackButton'
@@ -10,13 +10,18 @@ import './style.css'
 
 export default function ToDoList() {
   const { id } = useParams()
+  const history = useHistory()
   const token = localStorage.getItem('token')
   const [ toDos, setToDos ] = useState({})
+  const [ changes, setChanges ] = useState({})
+  const [ toDoListName, setToDoListName ] = useState('Carregando...')
+  useEffect(() => { document.title = `To Do System - ${toDoListName}` }, [toDoListName])
 
   useEffect(() => {
     api.get(`/to-do-lists/${id}`, { headers: {'Authorization': token } })
       .then(res => {
-        const newToDos = res.data.reduce((toDos, currentToDo) => {
+        setToDoListName(res.data.toDoList.name)
+        const newToDos = res.data.toDoItems.reduce((toDos, currentToDo) => {
           return (toDos = {
             ...toDos,
             [currentToDo.id]: {
@@ -32,20 +37,26 @@ export default function ToDoList() {
 
   async function handleCheck(event) {
     const id = event.target.id
+    const checked = event.target.checked
 
-    await setToDos({...toDos, [id]: {...toDos[id], checked: event.target.checked }})
+    await setToDos({...toDos, [id]: {...toDos[id], checked }})
+    await setChanges({...changes, [id]: {...changes[id], id, checked }})
   }
 
   async function handleChangeText(event) {
     const id = event.target.id
+    const text = event.target.value
 
-    await setToDos({...toDos, [id]: {...toDos[id], text: event.target.value }})
+    await setToDos({...toDos, [id]: {...toDos[id], text }})
+    await setChanges({...changes, [id]: {...changes[id], id, text }})
   }
 
   async function handleAddToDo(event) {
     const time = Date.now()
-    const toDoName = `new ${time}`
-    await setToDos({...toDos, [toDoName]: {text: event.target.value, checked: false}})
+    const text = event.target.value
+    const id = `new ${time}`
+    await setToDos({...toDos, [id]: {id, text, checked: false}})
+    await setChanges({...changes, [id]: {id, text, checked: false}})
     const toDoElements = document.getElementsByClassName('to-do')
 
     const [, input] = toDoElements[toDoElements.length - 2].getElementsByTagName('input')
@@ -59,17 +70,42 @@ export default function ToDoList() {
     event.preventDefault()
 
     await setToDos({...toDos, [id]: {...toDos[id], delete: true}})
+
+    if (changes[id] && /(new)/.test(changes[id].id)) {
+      const newChanges = changes
+
+      delete newChanges[id]
+      await setChanges(newChanges)
+    } else {
+      setChanges({...changes, [id]: {id, delete: true }})
+    }
+  }
+
+  async function handleSaveToDos (event) {
+    event.preventDefault()
+    const data = Object.values(changes).map(change => {
+      if (/(new)/.test(change.id)) {
+        change.id = 'new'
+        return change
+      } else {
+        return change
+      }
+    })
+
+    api.patch(`/to-do-lists/${id}`, data, {
+      headers: { 'Authorization': token }
+    }).then(history.push('/'))
   }
 
   return (
     <>
       <header>
-        <h1>Tarefas de Casa</h1>
+        <h1>{toDoListName}</h1>
         <BackButton to='/' />
       </header>
       <main>
         <div className="to-do-list">
-          <form>
+          <form onSubmit={handleSaveToDos}>
             <ul className='to-dos'>
               {
                 Object.values(toDos).map(toDo => {
@@ -96,7 +132,7 @@ export default function ToDoList() {
                         autoComplete="off"
                         onChange={handleChangeText}
                       />
-                      <button onClick={(event) => handleDeleteToDo(event, toDo)}>
+                      <button onClick={(event) => handleDeleteToDo(event, toDo.id)}>
                         <FiX size={16} color="#dddddd"/>
                       </button>
                     </li>

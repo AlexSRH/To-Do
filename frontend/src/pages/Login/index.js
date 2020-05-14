@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FiLogIn } from 'react-icons/fi'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -6,6 +6,7 @@ import './style.css'
 import api from '../../services/api'
 
 export default function Login () {
+  useEffect(() => { document.title = 'To Do System - Login' }, [])
   const history = useHistory()
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')

@@ -5,6 +5,7 @@
   list-style: none;
   flex-direction: column;
   width: 100%;
+  overflow: auto;
 }
 
 .to-do-lists li {

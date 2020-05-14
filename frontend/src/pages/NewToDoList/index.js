@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import BackButton from '../../components/BackButton'
 import api from '../../services/api'
 
 export default function NewToDoList () {
+  useEffect(() => {
+    document.title = 'Nova Lista'
+    document.getElementById('newToDoName').focus()
+  }, [])
   const history = useHistory()
   const [ name, setName ] = useState()
 
@@ -29,7 +33,7 @@ export default function NewToDoList () {
         <div className="box">
           <h2>Nome</h2>
           <form onSubmit={handleCreateToDoLists}>
-            <input type="text" onChange={e => setName(e.target.value)} placeholder='Digite o nome da nova lista...'/>
+            <input type="text" id='newToDoName' onChange={e => setName(e.target.value)} placeholder='Digite o nome da nova lista...'/>
             <button type="submit">Criar Lista</button>
           </form>
         </div>

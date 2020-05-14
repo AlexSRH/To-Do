@@ -26,8 +26,10 @@ export default function Register () {
     try {
       const res = await api.post('/users', data)
       const token = res.data.token
+      const userName = res.data.user.name
 
       localStorage.setItem('token', `Bearer ${token}`)
+      localStorage.setItem('userName', userName)
 
       history.push('/')
     } catch (err) {

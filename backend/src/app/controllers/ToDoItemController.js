@@ -1,12 +1,15 @@
 const ToDoItem = require('../models/ToDoItem')
+const ToDoList = require('../models/ToDoList')
 
 module.exports = {
   async index (req, res) {
+    const id = req.params.id
+    const toDoList = await ToDoList.findOne({ where: { id } })
     const toDoItems = await ToDoItem.findAll({
-      where: { to_do_list_id: req.params.id }
+      where: { to_do_list_id: id }
     })
 
-    return res.json(toDoItems)
+    return res.json({ toDoList, toDoItems })
   },
 
   async edit (req, res) {
