@@ -17,7 +17,12 @@ module.exports = {
 
     toDoChanges.forEach(async toDo => {
       if (toDo.id === 'new') {
-        await ToDoItem.create({ text: toDo.text, to_do_list_id: req.params.id })
+        const checked = toDo.checked || false
+        await ToDoItem.create({ 
+          text: toDo.text,
+          to_do_list_id: req.params.id,
+          checked
+        })
       } else if (toDo.delete) {
         await ToDoItem.destroy({ where: { id: toDo.id } })
       } else {
