@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import BackButton from '../../components/BackButton'
+import api from '../../services/api'
 
 export default function NewToDoList () {
+  const history = useHistory()
+  const [ name, setName ] = useState()
+
+  const token = localStorage.getItem('token')
+
+  function handleCreateToDoLists (e) {
+    e.preventDefault()
+
+    api.post('/to-do-lists', { name }, { headers: { 'Authorization': token } })
+      .then(res => setName(res.data))
+
+    history.push('/')
+  }
+
   return (
     <>
       <header>
@@ -12,8 +28,8 @@ export default function NewToDoList () {
       <main>
         <div className="box">
           <h2>Nome</h2>
-          <form>
-            <input type="text" placeholder='Digite o nome da nova lista...'/>
+          <form onSubmit={handleCreateToDoLists}>
+            <input type="text" onChange={e => setName(e.target.value)} placeholder='Digite o nome da nova lista...'/>
             <button type="submit">Criar Lista</button>
           </form>
         </div>

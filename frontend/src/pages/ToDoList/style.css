@@ -9,12 +9,17 @@
 }
 
 .to-do-list button[type=submit] {
+  background-color: #ddd;
   width: 100%;
   font-size: 24px;
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
   line-height: 30px;
+}
+
+.to-do-list button[type=submit]:hover {
+  background-color: #eee;
 }
 
 .to-dos {

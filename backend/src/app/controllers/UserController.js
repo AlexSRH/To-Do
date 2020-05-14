@@ -9,10 +9,11 @@ module.exports = {
     }
 
     const user = await User.create({ name, email, password })
+    const token = await user.generateToken()
 
     user.password = undefined
     user.password_hash = undefined
 
-    return res.json({ user })
+    return res.json({ user, token })
   }
 }

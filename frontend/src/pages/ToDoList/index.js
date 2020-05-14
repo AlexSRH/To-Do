@@ -1,13 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { FiX } from 'react-icons/fi'
 
 import BackButton from '../../components/BackButton'
 import ToggleButton from '../../components/ToggleButon'
+import api from '../../services/api'
 
 import './style.css'
 
 export default function ToDoList() {
+  const { id } = useParams()
+  const token = localStorage.getItem('token')
   const [ toDos, setToDos ] = useState({})
+
+  useEffect(() => {
+    api.get(`/to-do-lists/${id}`, { headers: {'Authorization': token } })
+      .then(res => {
+        const newToDos = res.data.reduce((toDos, currentToDo) => {
+          return (toDos = {
+            ...toDos,
+            [currentToDo.id]: {
+              id: currentToDo.id,
+              text: currentToDo.text,
+              checked: currentToDo.checked
+            }
+          })
+        }, {})
+        setToDos(newToDos)
+      })
+  }, [id, token])
 
   async function handleCheck(event) {
     const id = event.target.id
@@ -40,11 +61,6 @@ export default function ToDoList() {
     await setToDos({...toDos, [id]: {...toDos[id], delete: true}})
   }
 
-  function test(event) {
-    event.preventDefault()
-    console.log(toDos)
-  }
-
   return (
     <>
       <header>
@@ -56,31 +72,31 @@ export default function ToDoList() {
           <form>
             <ul className='to-dos'>
               {
-                Object.keys(toDos).map(toDoId => {
-                  if (toDos[toDoId].delete) {
+                Object.values(toDos).map(toDo => {
+                  if (toDo.delete) {
                     return ''
                   }
                   return (
-                    <li className='to-do' key={toDoId}>
+                    <li className='to-do' key={toDo.id}>
                       <input
                         type="checkbox"
-                        id={toDoId}
-                        defaultChecked={toDos[toDoId].checked}
+                        id={toDo.id}
+                        defaultChecked={toDo.checked}
                         onChange={handleCheck}
                       />
-                      <label for={toDoId}>
-                        <ToggleButton checked={toDos[toDoId].checked}/>
+                      <label htmlFor={toDo.id}>
+                        <ToggleButton checked={toDo.checked}/>
                       </label>
                       <input
                         type="text"
                         placeholder='Digite um novo To Do...'
                         name='text'
-                        id={toDoId}
-                        defaultValue={toDos[toDoId].text}
+                        id={toDo.id}
+                        defaultValue={toDo.text}
                         autoComplete="off"
                         onChange={handleChangeText}
                       />
-                      <button onClick={(event) => handleDeleteToDo(event, toDoId)}>
+                      <button onClick={(event) => handleDeleteToDo(event, toDo)}>
                         <FiX size={16} color="#dddddd"/>
                       </button>
                     </li>
@@ -97,7 +113,7 @@ export default function ToDoList() {
                 />
               </li>
             </ul>
-            <button type='submit' onClick={test}>Salvar</button>
+            <button type='submit'>Salvar</button>
           </form>
         </div>
       </main>
