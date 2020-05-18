@@ -27,6 +27,21 @@ Sistema simples de To Do List com usuários, listas e itens de To Do em cada lis
 
 - [Node.js](https://nodejs.org/en/)
 
+## Instalação e execução
+
+1. Faça um clone desse repositório;
+
+### Backend
+2. Entre na pasta `cd backend`;
+3. Rode `npm install` para instalar as dependências;
+4. Rode `npm start` para iniciar o backend;
+
+### Frontend
+2. Entre na pasta `cd frontend`;
+3. Rode `npm install` para instalar as dependências;
+4. Rode `npm start` para iniciar o frontend;
+5. Entre em `http://localhost:3000`;
+
 ## Como contribuir
 
 - Faça um fork desse repositório;
@@ -36,5 +51,5 @@ Sistema simples de To Do List com usuários, listas e itens de To Do em cada lis
 
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
 
-### Licença
+## Licença
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
